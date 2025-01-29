@@ -110,7 +110,7 @@ cd examples
 make ex0
 ./ex0
 ```
-MacOS:
+MacOS: (Assuming you have `git` installed)
 ```bash
 xcode-select --install
 git clone https://github.com/mfem/mfem.git
