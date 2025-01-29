@@ -44,22 +44,26 @@ make --version
 ```
 If you do not have a C/C++ compiler installed, then you will get an error message.
 
-For Linux, you can install the prerequisites using the following command on your terminal:
+<details>
+    <summary>Linux</summary>
+
+    You can install the prerequisites using the following command on your terminal:
+
 ```bash
 sudo apt update # Update the package list
 sudo apt install -y build-essential # Install C/C++ compiler and build tools
 ```
-Check your installation by running the following command:
-```bash
-g++ --version # Check C++ compiler installation
-make --version # Check make installation
-cmake --version # Check cmake installation
-```
+</details>
 
-For MacOS, you can use Apple's Xcode Command Line Tools. You can install it using the following command:
+<details>
+    <summary>MacOS</summary>
+
+You can use Apple's Xcode Command Line Tools. You can install it using the following command:
 ```bash
 xcode-select --install # A dialog box will appear, click on Install. This will install necessary compilers and build tools
 ```
+</details>
+
 Check your installation by running the following command:
 ```bash
 g++ --version
@@ -110,6 +114,7 @@ cd examples
 make ex0
 ./ex0
 ```
+
 MacOS: (Assuming you have `git` installed)
 ```bash
 xcode-select --install
@@ -127,10 +132,11 @@ make ex0
 > For higher quality visualization, I recommend using `ParaView`. You may refer to `examples/ex5.cpp` for more information.
 
 For interactive visualization, you can use `GLVis`.
-If you are using an Apple machine with M-series chips, you can download the app from the [GLVis website](https://glvis.org/)
 
-For Linux, you can build `GLVis` from the source code.
-Firstly, navigate to the top level directory (`$HOME/apma2560`) and run the following commands:
+<details>
+    <summary>Linux</summary>
+
+Navigate to the top level directory (`$HOME/apma2560`) and run the following commands:
 ```bash
 apt-get install -y libfontconfig1-dev libfreetype-dev libsdl2-dev libglew-dev libglm-dev libpng-dev
 git clone https://github.com/GLVis/glvis.git # Download GLVis repository
@@ -138,6 +144,24 @@ cd glvis # Change directory to the GLVis source directory
 git checkout -b v4.3 # Get a specific version of GLVis
 make MFEM_DIR=../mfem -j8 # Assuming mfem is in the parent directory
 ```
+</details>
+
+<details>
+    <summary>MacOS</summary>
+
+    1. If you are using an Apple machine with M-series chips, you can download the app from the [GLVis website](https://glvis.org/).
+    Then you can run `GLVis`` like any other app.
+
+    2. If you don't have an M-series chip, you can build `GLVis` from the source code.
+    ```bash
+brew install fontconfig freetype sdl2 glew glm libpng
+git clone https://github.com/GLVis/glvis.git # Download GLVis repository
+cd glvis # Change directory to the GLVis source directory
+git checkout -b v4.3 # Get a specific version of GLVis
+make MFEM_DIR=../mfem -j8 # Assuming mfem is in the parent directory
+    ```
+</details>
+
 You can run `glvis` using the following command:
 ```bash
 ./glvis
@@ -174,15 +198,24 @@ If you do not have MPI installed, you will get an error message.
 
 You can install MPI using the following command:
 
-Linux:
+<details>
+    <summary>Linux</summary>
+
 ```bash 
 sudo apt install -y openmpi-bin openmpi-common openmpi-doc libopenmpi-dev
 ```
-MacOS:
-You can run the following command:
+
+</details>
+
+<details>
+    <summary>MacOS</summary>
+
 ```bash
 brew install open-mpi
 ```
+
+</details>
+
 Check your installation by running the following command:
 ```bash
 mpicc --version # Should return the version of MPI
@@ -228,6 +261,7 @@ cd examples
 make ex1p
 mpirun -np 8 ./ex1p # Run ex1p with 8 MPI processes
 ```
+
 ## Debugging
 
 By default, MFEM is built in release mode.
