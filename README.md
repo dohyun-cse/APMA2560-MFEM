@@ -9,6 +9,8 @@ In this tutorial, we will install MFEM on your local machine.
 
 > **NOTE 3** You can find the official installation instructions on the [MFEM website](https://mfem.org/install.html).
 
+> **NOTE 4** For code blocks, you can copy the code by clicking `copy` button on the top right corner of the code block.
+
 
 ## Directory Setup and Basic Terminal Usage
 
