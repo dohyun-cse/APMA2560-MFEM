@@ -47,7 +47,7 @@ If you do not have a C/C++ compiler installed, then you will get an error messag
 <details>
     <summary>Linux</summary>
 
-    You can install the prerequisites using the following command on your terminal:
+You can install the prerequisites using the following command on your terminal:
 
 ```bash
 sudo apt update # Update the package list
