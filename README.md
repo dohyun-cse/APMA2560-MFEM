@@ -37,7 +37,7 @@ cd .. # Change to the parent directory
 ## Build Serial MFEM
 
 ### Step 1: Install C/C++ Compiler
-Check if you have a C/C++ compiler installed on your machine:
+Check whether you have a C/C++ compiler installed on your machine:
 ```bash
 gcc --version
 make --version
@@ -162,7 +162,16 @@ Parallel MFEM requires MPI (Message Passing Interface) to run in parallel.
 Also, you need to install the `metis` (for graph partitioning) and `hypre` (for parallel data structures) libraries.
 
 ### Step 1: Install MPI
-MFEM is designed to run in parallel using MPI (Message Passing Interface).
+
+There are two popular implementations of MPI: `OpenMPI` and `MPICH`.
+Because they two can conflict with each other, you should install only one of them.
+In the following, we will use `OpenMPI`.
+Please skip this step if you already have MPI installed. You can check your installation by running the following command:
+```bash
+mpicc --version
+```
+If you do not have MPI installed, you will get an error message.
+
 You can install MPI using the following command:
 
 Linux:
@@ -170,8 +179,7 @@ Linux:
 sudo apt install -y openmpi-bin openmpi-common openmpi-doc libopenmpi-dev
 ```
 MacOS:
-If you do not have `brew` installed, follow the instructions on the [Homebrew website](https://brew.sh/) and then restart the terminal.
-After installing `brew`, you can run the following command:
+You can run the following command:
 ```bash
 brew install open-mpi
 ```
@@ -220,4 +228,16 @@ cd examples
 make ex1p
 mpirun -np 8 ./ex1p # Run ex1p with 8 MPI processes
 ```
+## Debugging
 
+By default, MFEM is built in release mode.
+The release mode is optimized for performance and does not include debugging information.
+If you want to debug your code, you can build MFEM in debug mode.
+Serial:
+```bash
+make debug -j8
+```
+Parallel:
+```bash
+make pdebug -j8
+```
