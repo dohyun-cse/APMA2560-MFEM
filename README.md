@@ -174,8 +174,13 @@ You can also run your `GLVis` server in the background using the following comma
 ```
 Then, the server will run in the background until you close the terminal.
 - Here, `>` redirects output to `/dev/null`, a null device (nothing).
-- Then `2>&2` is `2 (stderr)` to `2 (stderr)` so that only normal output `1 (stdout)` is redirected to `/dev/null`.
+- Then `2>&2` redirects `2 (stderr)` to `2 (stderr)` so that we can still get an error when the server emits an error.
 - Finally, the last `&` means the server runs in the background.
+- It is a good idea to make an alias by adding the following line
+  ```bash
+  alias glvis='<GLVIS_DIR>/glvis > /dev/null 2>&2 &'
+  ```
+  to `$HOME/.bashrc` or `$HOME/.zshrc` depending on your shell environment.
 
 Now, navigate to the MFEM examples directory (`mfem/examples`) and run the following command:
 ```bash
