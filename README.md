@@ -170,9 +170,12 @@ This will launch a `GLVis` server waiting for a connection from MFEM. The server
 
 You can also run your `GLVis` server in the background using the following command:
 ```bash
-./glvis &
+./glvis > /dev/null 2>&2 &
 ```
-Then, the server will be running in the background until you close the terminal.
+Then, the server will run in the background until you close the terminal.
+- Here, `>` redirects output to `/dev/null`, a null device (nothing).
+- Then `2>&2` is `2 (stderr)` to `2 (stderr)` so that only normal output `1 (stdout)` is redirected to `/dev/null`.
+- Finally, the last `&` means the server runs in the background.
 
 Now, navigate to the MFEM examples directory (`mfem/examples`) and run the following command:
 ```bash
