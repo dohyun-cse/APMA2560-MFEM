@@ -253,7 +253,7 @@ ln -s hypre-2.26.0 hypre # Create a symbolic link (shortcut) to the Hypre 2.26.0
 Change your directory to the top level directory (`$HOME/apma2560`) and run the following commands:
 ```bash
 cd mfem # Change directory to the MFEM source directory
-make parallel -j8 MFEM_USE_MPI=YES MFEM_USE_METIS_5=YES METIS_DIR=$MFEM_DIR/../metis-5.1.0
+make parallel -j8 MFEM_USE_MPI=YES MFEM_USE_METIS_5=YES METIS_DIR=@MFEM_DIR@/../metis-5.1.0
 ```
 After the build is complete, you can run the following command to run the first example in parallel:
 ```bash
