@@ -11,6 +11,8 @@ In this tutorial, we will install MFEM on your local machine.
 
 > **NOTE 4** For code blocks, you can copy the code by clicking `copy` button on the top right corner of the code block.
 
+> **NOTE 5** If your terminal recognize comments (characters after `#`), then please remove comments and run the command again.
+
 
 ## Directory Setup and Basic Terminal Usage
 
