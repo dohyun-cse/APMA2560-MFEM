@@ -11,30 +11,32 @@ In this tutorial, we will install MFEM on your local machine.
 
 > **NOTE 4** For code blocks, you can copy the code by clicking `copy` button on the top right corner of the code block.
 
-> **NOTE 5** If your terminal recognize comments (characters after `#`), then please remove comments and run the command again.
-
 
 ## Directory Setup and Basic Terminal Usage
 
 - Before installing MFEM, make a clean directory, e.g., `$HOME/apma2560`.
 - You can make a build directory and navigate to it using the following commands:
 ```bash
-mkdir $HOME/apma2560 # [M]a[k]e a [dir]ectory apma2560 in your home ($HOME) directory
-cd $HOME/apma2560    # [C]hange [D]irectory to apma2560
+mkdir $HOME/apma2560
+cd $HOME/apma2560
 ```
+The first line [m]a[k]es a [dir]ectory apma2560 in your home ($HOME) directory, and the second line [c]hange [d]irectory to apma2560
 - Change `$HOME/apma2560` to the directory where you want to install MFEM.
 - You can check your current directory using the following command:
 ```bash
-pwd # [P]rint [w]orking [d]irectory
+pwd
 ```
+[P]rint [w]orking [d]irectory
 - You can list the files and directories in your current directory using the following command:
 ```bash
-ls # [L]i[s]t files and directories
+ls
 ```
+[L]i[s]t files/directories.
 - `.` represents the current directory, `..` represents the parent directory, and `~` or `$HOME` represents the home directory.
 ```bash
-cd .. # Change to the parent directory
+cd ..
 ```
+[C]hange [d]irectory to `..` (parent directory).
 
 ## Build Serial MFEM
 
@@ -62,15 +64,15 @@ sudo apt install -y build-essential # Install C/C++ compiler and build tools
 
 You can use Apple's Xcode Command Line Tools. You can install it using the following command:
 ```bash
-xcode-select --install # A dialog box will appear, click on Install. This will install necessary compilers and build tools
+xcode-select --install
 ```
+A dialog box will appear, click on Install. This will install necessary compilers and build tools.
 </details>
 
 Check your installation by running the following command:
 ```bash
 g++ --version
 make --version
-cmake --version
 ```
 
 ### Step 2: Download MFEM
@@ -80,20 +82,18 @@ If you have `git` installed, you can clone the repository using the following co
 ```bash
 git clone https://github.com/mfem/mfem.git
 cd mfem
-git checkout -b v4.5 # You can change the version number
+git checkout -b v4.5
+git pull origin v4.5
 ```
+Clone means that you download a repository on your machine. Then `git checkout -b v4.5` means that we want to make our local version match with `v4.5` (branch `v4.5`). Finally, `git pull origin v4.5` download contents in version 4.5 if it is not up-to-date (you will see `Already up to date` if your version is up-to-date.
 
 ### Step 3: Build MFEM
-
-Now, change your directory to the MFEM source directory:
-```bash
-cd mfem
-```
+Now, you 
 Then run the following commands to build MFEM:
 ```bash
 make serial -j8
 ```
-This will take some time to build MFEM.
+This will take some time to build MFEM with 8 parallel processes.
 
 After the build is complete, you can run the following command to run the first example:
 ```bash
@@ -142,9 +142,9 @@ Navigate to the top level directory (`$HOME/apma2560`) and run the following com
 ```bash
 apt-get install -y libfontconfig1-dev libfreetype-dev libsdl2-dev libglew-dev libglm-dev libpng-dev
 git clone https://github.com/GLVis/glvis.git # Download GLVis repository
-cd glvis # Change directory to the GLVis source directory
-git checkout -b v4.3 # Get a specific version of GLVis
-make MFEM_DIR=../mfem -j8 # Assuming mfem is in the parent directory
+cd glvis
+git checkout -b v4.3
+make MFEM_DIR=../mfem -j8
 ```
 </details>
 
@@ -157,10 +157,10 @@ make MFEM_DIR=../mfem -j8 # Assuming mfem is in the parent directory
     2. If you don't have an M-series chip, you can build `GLVis` from the source code.
     ```bash
 brew install fontconfig freetype sdl2 glew glm libpng
-git clone https://github.com/GLVis/glvis.git # Download GLVis repository
-cd glvis # Change directory to the GLVis source directory
-git checkout -b v4.3 # Get a specific version of GLVis
-make MFEM_DIR=../mfem -j8 # Assuming mfem is in the parent directory
+git clone https://github.com/GLVis/glvis.git
+cd glvis
+git checkout -b v4.3
+make MFEM_DIR=../mfem -j8
     ```
 </details>
 
@@ -235,12 +235,12 @@ mpicc --version # Should return the version of MPI
 
 Change your directory to the top level directory (`$HOME/apma2560`) and run the following commands:
 ```bash
-curl -sL https://github.com/mfem/tpls/raw/refs/heads/gh-pages/metis-5.1.0.tar.gz -o metis-5.1.0.tar.gz # Download Metis 5
-tar -xzf metis-5.1.0.tar.gz # Extract Metis 5
-cd metis-5.1.0 # Change directory to Metis 5
-make BUILDDIR=lib config # Configure Metis 5
-make BUILDDIR=lib -j8 # Build Metis 5
-cp lib/libmetis/libmetis.a lib # Copy the Metis 5 library so that MFEM can find it
+curl -sL https://github.com/mfem/tpls/raw/refs/heads/gh-pages/metis-5.1.0.tar.gz -o metis-5.1.0.tar.gz
+tar -xzf metis-5.1.0.tar.gz
+cd metis-5.1.0
+make BUILDDIR=lib config
+make BUILDDIR=lib -j8
+cp lib/libmetis/libmetis.a lib
 ```
 Please make sure that your output does not contain any errors and the output contains `[100%] Built target ...`.
 (You can ignore the warnings.)
@@ -249,28 +249,29 @@ Please make sure that your output does not contain any errors and the output con
 
 Change your directory to the top level directory (`$HOME/apma2560`) and run the following commands:
 ```bash
-curl -sL https://github.com/hypre-space/hypre/archive/refs/tags/v2.26.0.tar.gz -o hypre-2.26.0.tar.gz # Download Hypre 2.26.0
-tar -xzf hypre-2.26.0.tar.gz # Extract Hypre 2.26.0
-cd hypre-2.26.0/src # Change directory to Hypre 2.26.0 source directory
-./configure --disable-fortran # Configure Hypre 2.26.0
-make -j8 # Build Hypre 2.26.0
-cd ../.. # Change directory to the top level directory
-ln -s hypre-2.26.0 hypre # Create a symbolic link (shortcut) to the Hypre 2.26.0 directory called hypre
+curl -sL https://github.com/hypre-space/hypre/archive/refs/tags/v2.26.0.tar.gz -o hypre-2.26.0.tar.gz
+tar -xzf hypre-2.26.0.tar.gz
+cd hypre-2.26.0/src
+./configure --disable-fortran
+make -j8
+cd ../..
+ln -s hypre-2.26.0 hypre
 ```
 
 ### Step 4: Build Parallel MFEM
 
 Change your directory to the top level directory (`$HOME/apma2560`) and run the following commands:
 ```bash
-cd mfem # Change directory to the MFEM source directory
+cd mfem
 make parallel -j8 MFEM_USE_MPI=YES MFEM_USE_METIS_5=YES METIS_DIR=@MFEM_DIR@/../metis-5.1.0
 ```
 After the build is complete, you can run the following command to run the first example in parallel:
 ```bash
 cd examples
 make ex1p
-mpirun -np 8 ./ex1p # Run ex1p with 8 MPI processes
+mpirun -np 8 ./ex1p
 ```
+This will run `ex1p` with 8 processes.
 
 ## Debugging
 
