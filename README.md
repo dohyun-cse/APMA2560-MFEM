@@ -7,7 +7,7 @@ In this tutorial, we will install MFEM on your local machine.
 
 > **NOTE 2** If you are using a Mac, I recommend using the Homebrew package manager to install dependencies. See, [Homebrew](https://brew.sh/).
 
-> **NOTE 3** You can find the official installation instructions on the [MFEM website](https://mfem.org/install.html).
+> **NOTE 3** You can find the official installation instructions on the [MFEM website](https://mfem.org/building).
 
 > **NOTE 4** For code blocks, you can copy the code by clicking `copy` button on the top right corner of the code block.
 
