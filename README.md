@@ -140,7 +140,7 @@ For interactive visualization, you can use `GLVis`.
 
 Navigate to the top level directory (`$HOME/apma2560`) and run the following commands:
 ```bash
-apt-get install -y libfontconfig1-dev libfreetype-dev libsdl2-dev libglew-dev libglm-dev libpng-dev
+sudo apt-get install -y libfontconfig1-dev libfreetype-dev libsdl2-dev libglew-dev libglm-dev libpng-dev
 git clone https://github.com/GLVis/glvis.git # Download GLVis repository
 cd glvis
 git checkout -b v4.3
