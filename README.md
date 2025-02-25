@@ -19,6 +19,26 @@ Run the following command at the current directory after replacing `<path-to-mfe
 ```bash
 cp -r .vscode <path-to-mfem>
 ```
+To format your code, you need to install `astyle` using your package manager.
+
+<details>
+    <summary>Linux</summary>
+
+```bash
+sudo apt-get install -y astyle
+```
+
+</details>
+
+<details>
+    <summary>MacOS</summary>
+
+```
+brew install astyle
+```
+
+</details>
+
 
 ## Directory Setup and Basic Terminal Usage
 
