@@ -19,6 +19,9 @@ Run the following command at the current directory after replacing `<path-to-mfe
 ```bash
 cp -r .vscode <path-to-mfem>
 ```
+
+Please install the following extensions: `C/C++`, `Astyle`
+
 To format your code, you need to install `astyle` using your package manager.
 
 <details>
@@ -28,6 +31,9 @@ To format your code, you need to install `astyle` using your package manager.
 sudo apt-get install -y astyle
 ```
 
+Your code will be formatted automatically when you save your file.
+You can also manually format your code using `Ctrl+Shift+I`.
+
 </details>
 
 <details>
@@ -36,6 +42,9 @@ sudo apt-get install -y astyle
 ```
 brew install astyle
 ```
+
+Your code will be formatted automatically when you save your file.
+You can also manually format your code using `Option+Shift+F`.
 
 </details>
 
