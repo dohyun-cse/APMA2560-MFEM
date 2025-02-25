@@ -11,6 +11,14 @@ In this tutorial, we will install MFEM on your local machine.
 
 > **NOTE 4** For code blocks, you can copy the code by clicking `copy` button on the top right corner of the code block.
 
+## NEW! VSCode Settings
+
+If you are using `Visual Studio Code`, then you can copy `.vscode` to your `mfem` directory to configure your workspace.
+Run the following command at the current directory after replacing `<path-to-mfem>` to your `mfem` directory:
+
+```bash
+cp -r .vscode <path-to-mfem>
+```
 
 ## Directory Setup and Basic Terminal Usage
 
