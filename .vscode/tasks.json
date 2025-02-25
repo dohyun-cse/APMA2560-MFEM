@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "make current file", // match with preLaunchTask in launch.json
+			"command": "make", // command to execute
+			"args": [
+				"${fileBasenameNoExtension}" // arguments to be passed.
+			], // execute make ex0 when you currently focused on `ex0.cpp`.
+			"options": {
+				"cwd": "${fileDirname}" // launch above command at the file's directory
+			},
+			"problemMatcher": [
+				"$gcc" // This will be used to populate `PROBLEMS` tab when there are errors/warnings
+			],
+			"group": "build",
+			"detail": "mfem make"
+		}
+	]
+}

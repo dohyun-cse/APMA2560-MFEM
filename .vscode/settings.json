@@ -1,0 +1,8 @@
+{
+    "astyle.astylerc": "${workspaceRoot}/.vscode/mfem.astylerc",
+    "editor.defaultFormatter": "chiehyu.vscode-astyle",
+    "editor.tabSize": 3,
+    "editor.useTabStops": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+}
