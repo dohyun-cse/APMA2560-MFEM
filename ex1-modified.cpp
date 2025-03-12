@@ -104,7 +104,6 @@ void MarkBoundaries(Mesh &mesh, int attr,
    mesh.SetAttributes();
 }
 
-
 double rhs_func(const Vector &x)
 {
    return M_PI*M_PI*2.0*sin(M_PI*x[0])*sin(M_PI*x[1]);
@@ -127,13 +126,19 @@ int main(int argc, char *argv[])
    bool visualization = true;
    bool algebraic_ceed = false;
 
-   double eps = 1.0;
+   double eps = 1.0; // diffusion strengh
+   double bx = 0.0; // convection x-direction
+   double by = 0.0; // convection y-direction
 
    OptionsParser args(argc, argv);
    // args.AddOption(&mesh_file, "-m", "--mesh",
    //                "Mesh file to use.");
    args.AddOption(&eps, "-eps", "--diffusion",
-                  "Diffusion coefficient");
+                  "Diffusion coefficient. Default = 1");
+   args.AddOption(&bx, "-bx", "--convection-x",
+                  "Convection x-direction. Default = 0");
+   args.AddOption(&by, "-by", "--convection-y",
+                  "Convection x-direction. Default = 0");
    args.AddOption(&order, "-o", "--order",
                   "Finite element order (polynomial degree) or -1 for"
                   " isoparametric space.");
@@ -249,8 +254,8 @@ int main(int argc, char *argv[])
    ConstantCoefficient eps_cf(eps);
    a.AddDomainIntegrator(new DiffusionIntegrator(eps_cf));
    Vector beta(2);
-   beta[0] = 1.0;
-   beta[1] = 1.0;
+   beta[0] = bx;
+   beta[1] = by;
    VectorConstantCoefficient beta_cf(beta);
    a.AddDomainIntegrator(new ConvectionIntegrator(beta_cf));
 
@@ -286,8 +291,14 @@ int main(int argc, char *argv[])
 #ifndef MFEM_USE_SUITESPARSE
          // Use a simple symmetric Gauss-Seidel preconditioner with PCG.
          GSSmoother M((SparseMatrix&)(*A));
-         GMRES(*A, M, B, X, 0);
-         // PCG(*A, M, B, X, 0, 2000, 1e-12, 0.0);
+         if (bx*bx + by*by == 0.0)
+         {
+            PCG(*A, M, B, X, 0, 2000, 1e-12, 0.0);
+         }
+         else
+         {
+            GMRES(*A, M, B, X, 0, 3000);
+         }
 #else
          // If MFEM was compiled with SuiteSparse, use UMFPACK to solve the system.
          UMFPackSolver umf_solver;
@@ -334,6 +345,18 @@ int main(int argc, char *argv[])
       socketstream sol_sock(vishost, visport);
       sol_sock.precision(8);
       sol_sock << "solution\n" << mesh << x << flush;
+
+      ParaViewDataCollection paraview_dc("Ex1-Modified", &mesh);
+      paraview_dc.SetPrefixPath("ParaView");
+      // Export high-resolution when high-order polynomials are used
+      paraview_dc.SetLevelsOfDetail(order == 1 ? order : order + 3);
+      paraview_dc.SetCycle(0);
+      paraview_dc.SetDataFormat(VTKFormat::BINARY);
+      paraview_dc.SetHighOrderOutput(true);
+      paraview_dc.SetTime(0.0); // set the time
+      paraview_dc.RegisterField("u",&x);
+      paraview_dc.Save();
+
    }
 
    // 15. Free the used memory.
