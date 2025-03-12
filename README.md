@@ -11,42 +11,10 @@ In this tutorial, we will install MFEM on your local machine.
 
 > **NOTE 4** For code blocks, you can copy the code by clicking `copy` button on the top right corner of the code block.
 
-## NEW! VSCode Settings
+## New! Modified ex1.cpp
 
-If you are using `Visual Studio Code`, then you can copy `.vscode` to your `mfem` directory to configure your workspace.
-Run the following command at the current directory after replacing `<path-to-mfem>` to your `mfem` directory:
-
-```bash
-cp -r .vscode <path-to-mfem>
-```
-
-Please install the following extensions: `C/C++`, `Astyle`
-
-To format your code, you need to install `astyle` using your package manager.
-
-<details>
-    <summary>Linux</summary>
-
-```bash
-sudo apt-get install -y astyle
-```
-
-Your code will be formatted automatically when you save your file.
-You can also manually format your code using `Ctrl+Shift+I`.
-
-</details>
-
-<details>
-    <summary>MacOS</summary>
-
-```
-brew install astyle
-```
-
-Your code will be formatted automatically when you save your file.
-You can also manually format your code using `Option+Shift+F`.
-
-</details>
+Copy `ex1-modified.cpp` to `examples` directory to check out the convection-diffusion equation.
+Play around with `eps` (diffusion coefficient), `rhs_func` (source function), `u_func` (exact solution and boundary data)
 
 
 ## Directory Setup and Basic Terminal Usage
@@ -323,3 +291,40 @@ Parallel:
 ```bash
 make pdebug -j8
 ```
+
+## VSCode Settings
+
+If you are using `Visual Studio Code`, then you can copy `.vscode` to your `mfem` directory to configure your workspace.
+Run the following command at the current directory after replacing `<path-to-mfem>` to your `mfem` directory:
+
+```bash
+cp -r .vscode <path-to-mfem>
+```
+
+Please install the following extensions: `C/C++`, `Astyle`
+
+To format your code, you need to install `astyle` using your package manager.
+
+<details>
+    <summary>Linux</summary>
+
+```bash
+sudo apt-get install -y astyle
+```
+
+Your code will be formatted automatically when you save your file.
+You can also manually format your code using `Ctrl+Shift+I`.
+
+</details>
+
+<details>
+    <summary>MacOS</summary>
+
+```
+brew install astyle
+```
+
+Your code will be formatted automatically when you save your file.
+You can also manually format your code using `Option+Shift+F`.
+
+</details>
