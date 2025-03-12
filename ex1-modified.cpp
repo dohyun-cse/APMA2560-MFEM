@@ -71,6 +71,40 @@
 using namespace std;
 using namespace mfem;
 
+/// @brief Mark boundaries of a mesh based on a predicate function.
+/// @param mesh The mesh whose boundaries will be marked.
+/// @param attr The attribute value to assign to marked boundaries.
+/// @param marker A function that takes the midpoint coordinate as input and returns true for boundaries to be marked.
+/// @example MarkBoundaries(mesh, 5, [](const Vector &x) { return x[0] < 1e-9; });
+/// This example marks boundaries where the x-coordinate is nearly zero, accounting for numerical errors.
+void MarkBoundaries(Mesh &mesh, int attr,
+                    std::function<bool(const Vector &x)> marker)
+{
+   const int dim = mesh.SpaceDimension();
+   Vector center(mesh.SpaceDimension());
+   Array<int> vertices;
+   for (int i=0; i<mesh.GetNBE(); i++)
+   {
+      center = 0.0;
+      mesh.GetBdrElement(i)->GetVertices(vertices);
+      for (auto v:vertices)
+      {
+         real_t * coord = mesh.GetVertex(v);
+         for (int d=0; d<dim; d++)
+         {
+            center[d] += coord[d];
+         }
+      }
+      center *= 1.0 / vertices.Size();
+      if (marker(center))
+      {
+         mesh.SetBdrAttribute(i, attr);
+      }
+   }
+   mesh.SetAttributes();
+}
+
+
 double rhs_func(const Vector &x)
 {
    return M_PI*M_PI*2.0*sin(M_PI*x[0])*sin(M_PI*x[1]);
