@@ -14,8 +14,9 @@ In this tutorial, we will install MFEM on your local machine.
 ## New! Modified ex1.cpp
 
 Copy `ex1-modified.cpp` to `examples` directory to check out the convection-diffusion equation.
-Play around with `eps` (diffusion coefficient), `rhs_func` (source function), `u_func` (exact solution and boundary data)
-
+Play around with `eps` (diffusion coefficient), `bx`, `by` (convection speed), `rhs_func` (source function), `u_func` (exact solution and boundary data).
+You can also change boundary marker with included function `MarkBoundaries`.
+Try to change the problem with pure diffusion, mixed BC (e.g., `u=sin(pi*x)*sin(pi*y)`).
 
 ## Directory Setup and Basic Terminal Usage
 
