@@ -5,18 +5,24 @@ In this tutorial, we will install MFEM on your local machine.
 
 > **NOTE 1** If you are using a Windows machine, you can install the Windows Subsystem for Linux (WSL) and follow the instructions for Linux.
 
-> **NOTE 2** If you are using a Mac, I recommend using the Homebrew package manager to install dependencies. See, [Homebrew](https://brew.sh/).
+> **NOTE 2** If you are using a Mac, I recommend using the Homebrew package manager to install dependencies; See [Homebrew](https://brew.sh/).
 
 > **NOTE 3** You can find the official installation instructions on the [MFEM website](https://mfem.org/building).
 
-> **NOTE 4** For code blocks, you can copy the code by clicking `copy` button on the top right corner of the code block.
+> **NOTE 4** For code blocks, you can copy the code by clicking the `copy` button on the top right corner of the code block.
 
-## New! Modified ex1.cpp
+## Heat equation, `heat.cpp`
 
-Copy `ex1-modified.cpp` to `examples` directory to check out the convection-diffusion equation.
-Play around with `eps` (diffusion coefficient), `bx`, `by` (convection speed), `rhs_func` (source function), `u_func` (exact solution and boundary data).
-You can also change boundary marker with included function `MarkBoundaries`.
-Try to change the problem with pure diffusion, mixed BC (e.g., `u=sin(pi*x)*sin(pi*y)`).
+It solves a heat equation in the unit square with the pure Neumann boundary condition.
+You can change the ODE solver by providing `-s`; see `mfem/linalg/ode.cpp`.
+Also, `helper.cpp` provides a simple interface for `GLVis`; see lines 168-173 in `heat.cpp`.
+
+## Modified ex1.cpp
+
+Copy `ex1-modified.cpp` to the `examples` directory to check out the convection-diffusion equation.
+Play around with `eps` (diffusion coefficient), `bx`, `by` (convection speed), `rhs_func` (source function), and `u_func` (exact solution and boundary data).
+You can also change the boundary marker with the included function `MarkBoundaries`.
+Try changing the problem with pure diffusion, mixed BC (e.g., `u=sin(pi*x)*sin(pi*y)`).
 
 ## Directory Setup and Basic Terminal Usage
 
